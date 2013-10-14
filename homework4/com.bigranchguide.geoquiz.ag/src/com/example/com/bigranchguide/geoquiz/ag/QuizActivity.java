@@ -24,15 +24,19 @@ public class QuizActivity extends Activity {
 	};
 	
 	private int mCurrentIndex = 0;
-
+	
+	private void updateQuestion()	{
+		int question = mQuestionBank[mCurrentIndex].getQuestion();
+		mQuestionTextView.setText(question);
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_quiz);
 		
 		mQuestionTextView = (TextView)findViewById(R.id.question_text_view);
-		int question = mQuestionBank[mCurrentIndex].getQuestion();
-		mQuestionTextView.setText(question);
+		
 		
 		mTrueButton = (Button)findViewById(R.id.true_button);
 		mTrueButton.setOnClickListener(new View.OnClickListener() {
@@ -52,9 +56,21 @@ public class QuizActivity extends Activity {
 				Toast.makeText(QuizActivity.this, 
 						R.string.correct_toast, 
 						Toast.LENGTH_SHORT).show();
+			}
+		});
+		
+		mNextButton = (Button)findViewById(R.id.next_button);
+		mNextButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+				updateQuestion();
 				
 			}
 		});
+		
+		updateQuestion();
 	}
 
 	@Override
