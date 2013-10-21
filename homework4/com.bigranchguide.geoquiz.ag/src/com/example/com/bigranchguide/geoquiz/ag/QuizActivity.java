@@ -1,6 +1,7 @@
 package com.example.com.bigranchguide.geoquiz.ag;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -17,6 +18,8 @@ public class QuizActivity extends Activity {
 	private Button mTrueButton;
 	private Button mFalseButton;
 	private Button mNextButton;
+	private Button mCheatButton;
+	private Boolean mIsCheater;
 	private TextView mQuestionTextView;
 	
 	private TrueFalse[] mQuestionBank = new TrueFalse[] {
@@ -27,6 +30,7 @@ public class QuizActivity extends Activity {
 			new TrueFalse(R.string.question_asia,true),	
 	};
 	
+	
 	private int mCurrentIndex = 0;
 	
 	private void updateQuestion()	{
@@ -34,15 +38,26 @@ public class QuizActivity extends Activity {
 		mQuestionTextView.setText(question);
 	}
 	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data){
+		if (data == null) {
+			return;
+		}
+		mIsCheater = data.getBooleanExtra(CheatActivity.EXTRA_ANSWER_SHOWN,false);
+	}
+	
 	private void checkAnswer(boolean userPressedTrue) {
 		boolean answerIsTrue = mQuestionBank[mCurrentIndex].isTrueQuestion();
 		int messageResId = 0;
 		
+		if(mIsCheater){
+			messageResId = R.string.judgement_toast;
+		} else {
 		if(userPressedTrue == answerIsTrue) {
 			messageResId = R.string.correct_toast;
 		} else {
 			messageResId = R.string.incorrect_toast;
-		}
+		}}
 		
 		Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
 	}
@@ -80,6 +95,7 @@ public class QuizActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+				mIsCheater = false;
 				updateQuestion();
 				
 			}
@@ -88,8 +104,23 @@ public class QuizActivity extends Activity {
 		if (savedInstanceState != null) {
 			mCurrentIndex = savedInstanceState.getInt(KEY_INDEX,0);
 		}
+		
+		mCheatButton = (Button)findViewById(R.id.cheat_button);
+		mCheatButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(QuizActivity.this, CheatActivity.class);
+				boolean answerIsTrue = mQuestionBank[mCurrentIndex].isTrueQuestion();
+				i.putExtra(CheatActivity.EXTRA_ANSWER_IS_TRUE,answerIsTrue);
+				startActivityForResult(i,0);
+				
+			}
+		});
+		
 		updateQuestion();
 	}
+	
 	
 	@Override 
 	public void onSaveInstanceState(Bundle savedInstanceState) {

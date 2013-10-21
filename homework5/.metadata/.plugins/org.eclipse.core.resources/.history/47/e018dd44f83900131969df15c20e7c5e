@@ -1,0 +1,6 @@
+import android.app.activity;
+
+
+public class CheatActivity extends activity {
+
+}
