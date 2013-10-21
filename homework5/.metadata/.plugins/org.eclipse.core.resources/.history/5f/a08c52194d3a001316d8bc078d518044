@@ -1,10 +1,10 @@
 package com.bignerdranch.android.ciminalintent;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.app.Activity;
 import android.view.Menu;
 
-public class CrimeActivity extends FragmentActivity {
+public class CrimeActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
