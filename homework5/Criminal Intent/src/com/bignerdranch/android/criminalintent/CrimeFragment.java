@@ -8,6 +8,10 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 
 import com.bignerdranch.android.ciminalintent.R;
@@ -15,6 +19,8 @@ import com.bignerdranch.android.ciminalintent.R;
 public class CrimeFragment extends Fragment {
 	
 	private Crime mCrime;
+	private Button mDateButton;
+	private CheckBox mSolvedCheckBox;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,25 @@ public class CrimeFragment extends Fragment {
 				//Space left blank
 			}
 		});	
+		
+		mDateButton = (Button) v.findViewById(R.id.crime_date);
+		mDateButton.setText(mCrime.getmDate().toString());
+		mDateButton.setEnabled(false);
+		
+		mSolvedCheckBox = (CheckBox) v.findViewById(R.id.crime_solved);
+		mSolvedCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			public void onCheckedChange(CompoundButton buttonView, boolean isChecked) {
+				//set the crime's solved property
+				mCrime.setmSolved(isChecked);
+			}
+
+			@Override
+			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		return v;
 		
 		
