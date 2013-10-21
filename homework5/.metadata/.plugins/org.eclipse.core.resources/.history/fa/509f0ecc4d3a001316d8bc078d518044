@@ -1,0 +1,15 @@
+package com.bignerdranch.android.ciminalintent;
+
+
+
+
+public class Crime {
+	
+	private UUID mId;
+	private String mTitle;
+	
+	public Crim(){
+	//Generate Unique Identifier
+	mId.UUID.randomUUID();
+	}
+}

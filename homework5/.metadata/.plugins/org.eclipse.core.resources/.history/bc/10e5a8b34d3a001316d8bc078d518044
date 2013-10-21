@@ -1,0 +1,7 @@
+package com.bignerdranch.android.ciminalintent;
+
+public class Crime {
+
+	private UUID mId;
+	private String mTitle;
+}
