@@ -18,5 +18,8 @@
 <fullyQualifiedTypeName name="com.bignerdranch.android.ciminalintent.R"/>
 <fullyQualifiedTypeName name="android.support.v4.app.FragmentManager"/>
 <fullyQualifiedTypeName name="android.support.v4.app.Fragment"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="com.bignerdranch.android.ciminalintent.R.layout"/>
 <fullyQualifiedTypeName name="com.bignerdranch.android.ciminalintent.R.id"/>
+<fullyQualifiedTypeName name="android.widget.CompoundButton.OnCheckedChangeListener"/>
 </qualifiedTypeNameHistroy>
