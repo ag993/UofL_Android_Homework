@@ -1,0 +1,13 @@
+import android.app.activity;
+
+
+public class CheatActivity extends activity {
+
+	@Override
+	protected void onCreate(Bundle saveInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_cheat);
+		
+	}
+
+}

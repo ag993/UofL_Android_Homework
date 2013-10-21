@@ -1,0 +1,21 @@
+package com.example.com.bigranchguide.geoquiz.ag;
+import android.app.Activity;
+import android.os.Bundle;
+
+import com.example.com.bigranchguide.geoquiz.ag.R;
+
+
+
+
+public class CheatActivity extends Activity {
+	
+	public static final String EXTRA_ANSWER_IS_TRUE = "com.example.com.bigranchguide.geoquiz.ag.answer_is_true"; 
+
+	@Override
+	protected void onCreate(Bundle saveInstanceState) {
+		super.onCreate(saveInstanceState);
+		setContentView(R.layout.activity_cheat);
+		
+	}
+
+}

@@ -1,0 +1,15 @@
+import android.os.Bundle;
+
+import com.example.com.bigranchguide.geoquiz.ag.R;
+
+
+public class CheatActivity extends activity {
+
+	@Override
+	protected void onCreate(Bundle saveInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_cheat);
+		
+	}
+
+}
