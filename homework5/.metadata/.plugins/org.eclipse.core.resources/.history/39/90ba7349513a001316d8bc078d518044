@@ -14,10 +14,11 @@ public class CrimeActivity extends FragmentActivity {
 		setContentView(R.layout.activity_crime);
 	}
 
-	//@Override
-	//public boolean onCreateOptionsMenu(Menu menu) {
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		//return true;
-//	}
+		getMenuInflater().inflate(R.menu.crime, menu);
+		return true;
+	}
 
 }
