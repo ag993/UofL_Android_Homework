@@ -3,14 +3,24 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.bignerdranch.android.ciminalintent.R;
 
 
 public class CrimeListFragment extends ListFragment {
 	private ArrayList<Crime> mCrimes;
+	private static final String TAG = "CrimeListFragment";
 
+	@Override
+	public void onListItemClick(ListView l, View v, int position, long id) {
+		Crime c = (Crime)(getListAdapter()).getItem(position);
+		Log.d(TAG, c.getmTitle() + " was clicked");
+	}
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
