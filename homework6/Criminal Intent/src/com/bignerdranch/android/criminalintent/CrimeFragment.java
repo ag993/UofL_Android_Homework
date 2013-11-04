@@ -1,6 +1,8 @@
 package com.bignerdranch.android.criminalintent;
 
 
+import java.util.UUID;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -21,11 +23,15 @@ public class CrimeFragment extends Fragment {
 	private Crime mCrime;
 	private Button mDateButton;
 	private CheckBox mSolvedCheckBox;
+	public static final String EXTRA_CRIME_ID = "com.bignerdranch.android.criminalintent";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mCrime= new Crime();
+		UUID crimeID = (UUID)getActivity().getIntent()
+				.getSerializableExtra(EXTRA_CRIME_ID);
+		
+		mCrime = CrimeLab.get(getActivity()).getCrime(crimeID);
 	}
 	
 	@Override
@@ -33,6 +39,7 @@ public class CrimeFragment extends Fragment {
 		View v = inflater.inflate(R.layout.fragment_crime, parent, false);
 		
 		EditText mTitleField = (EditText)v.findViewById(R.id.crime_title);
+		mTitleField.setText(mCrime.getmTitle());
 		mTitleField.addTextChangedListener(new TextWatcher() {
 			public void onTextChanged(
 					CharSequence c, int start, int before, int count) {
@@ -53,7 +60,9 @@ public class CrimeFragment extends Fragment {
 		mDateButton.setEnabled(false);
 		
 		mSolvedCheckBox = (CheckBox) v.findViewById(R.id.crime_solved);
+		mSolvedCheckBox.setChecked(mCrime.getmSolved());
 		mSolvedCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			@SuppressWarnings("unused")
 			public void onCheckedChange(CompoundButton buttonView, boolean isChecked) {
 				//set the crime's solved property
 				mCrime.setmSolved(isChecked);
