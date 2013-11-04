@@ -18,6 +18,12 @@ public class CrimeListFragment extends ListFragment {
 	private ArrayList<Crime> mCrimes;
 
 	@Override
+	public void onResume() {
+		super.onResume();
+		((CrimeAdapter)getListAdapter()).notifyDataSetChanged();
+	}
+	
+	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Crime c = (Crime)getListAdapter().getItem(position);
 		
@@ -31,6 +37,7 @@ public class CrimeListFragment extends ListFragment {
 		public CrimeAdapter(ArrayList<Crime> crimes) {
 			super(getActivity(), 0, crimes);
 		}
+		
 		
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
