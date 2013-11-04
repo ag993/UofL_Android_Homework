@@ -1,6 +1,7 @@
 package com.bignerdranch.android.criminalintent;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -38,6 +39,15 @@ public class CrimePagerActivity extends FragmentActivity {
 			}
 				
 		});
+		
+		UUID crimeID = (UUID)getIntent()
+				.getSerializableExtra(CrimeFragment.EXTRA_CRIME_ID);
+		for (int i=0; i< mCrimes.size(); i++) {
+			if(mCrimes.get(i).getmId().equals(crimeID)) {
+				mViewPager.setCurrentItem(i);
+				break;
+			}
+		}
 	}
 
 }
