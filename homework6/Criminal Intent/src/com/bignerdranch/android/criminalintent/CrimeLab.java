@@ -13,7 +13,7 @@ public class CrimeLab {
 	private Context mAppContext;
 	
 	private CrimeLab(Context appContext){
-		mAppContext = appContext;
+		setmAppContext(appContext);
 		mCrimes = new ArrayList<Crime>();
 		for (int i=0;i<100;i++) {
 			Crime c = new Crime();
@@ -40,6 +40,14 @@ public class CrimeLab {
 				return c;
 		}
 		return null;
+	}
+
+	public Context getmAppContext() {
+		return mAppContext;
+	}
+
+	public void setmAppContext(Context mAppContext) {
+		this.mAppContext = mAppContext;
 	}
 	
 }
