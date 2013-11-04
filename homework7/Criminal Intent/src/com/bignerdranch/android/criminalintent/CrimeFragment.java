@@ -73,7 +73,8 @@ public class CrimeFragment extends Fragment {
 			public void onClick(View v) {
 				FragmentManager fm = getActivity()
 						.getSupportFragmentManager();
-				DatePickerFragment dialog = new DatePickerFragment();
+				DatePickerFragment dialog = DatePickerFragment
+						.newInstance(mCrime.getmDate());
 				dialog.show(fm, DIALOG_DATE);
 			}
 		});

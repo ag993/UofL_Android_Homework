@@ -1,5 +1,7 @@
 package com.bignerdranch.android.criminalintent;
 
+import java.util.Date;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -9,6 +11,20 @@ import android.view.View;
 import com.bignerdranch.android.ciminalintent.R;
 
 public class DatePickerFragment extends DialogFragment {
+	
+	public static final String EXTRA_DATE =
+			"com.bignerdranch.android.criminalintent.date";
+	private Date mDate;
+	
+	public static DatePickerFragment newInstance(Date date) {
+		Bundle args = new Bundle();
+		args.putSerializable(EXTRA_DATE, date);
+		
+		DatePickerFragment fragment = new DatePickerFragment();
+		fragment.setArguments(args);
+		
+		return fragment;
+	}
 	
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
