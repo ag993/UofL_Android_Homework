@@ -1,7 +1,7 @@
+package com.bignerdranch.android.criminalintent;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import com.bignerdranch.android.criminalintent.Crime;
 
 import android.content.Context;
 
