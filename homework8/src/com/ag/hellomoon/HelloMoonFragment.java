@@ -14,6 +14,12 @@ public class HelloMoonFragment extends Fragment {
 	private Button mStopButton;
 	
 	@Override
+	public void onCreate (Bundle savedIndtanceState) {
+		super.onCreate(savedIndtanceState);
+		setRetainInstance(true);
+	}
+	
+	@Override
 	public void onDestroy() {
 		super.onDestroy();
 		mPlayer.stop();
