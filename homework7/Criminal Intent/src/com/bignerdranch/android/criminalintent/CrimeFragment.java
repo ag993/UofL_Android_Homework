@@ -123,18 +123,11 @@ public class CrimeFragment extends Fragment {
 		});
 		
 		mSolvedCheckBox = (CheckBox) v.findViewById(R.id.crime_solved);
-		//mSolvedCheckBox.setChecked(mCrime.getmSolved());
+		mSolvedCheckBox.setChecked(mCrime.getmSolved());
 		mSolvedCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			@SuppressWarnings("unused")
-			public void onCheckedChange(CompoundButton buttonView, boolean isChecked) {
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				//set the crime's solved property
 				mCrime.setmSolved(isChecked);
-			}
-
-			@Override
-			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
-				// TODO Auto-generated method stub
-				
 			}
 		});
 		
