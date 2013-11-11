@@ -19,7 +19,7 @@ public class Crime {
 	private UUID mId;
 	private String mTitle;
 	private Date mDate;
-	private Boolean mSolved =false;
+	private Boolean mSolved = false ;
 	
 	public Crime(){
 	//Generate Unique Identifier
