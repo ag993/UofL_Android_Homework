@@ -79,7 +79,7 @@ public class CrimeListFragment extends ListFragment {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			//If we weren't given a view, inflate one
-			if (convertView == null){
+			if (null == convertView){
 				convertView = getActivity().getLayoutInflater()
 						.inflate(R.layout.list_item_crime, null);
 			}
@@ -96,6 +96,8 @@ public class CrimeListFragment extends ListFragment {
 			
 			CheckBox solvedCheckBox =
 					(CheckBox)convertView.findViewById(R.id.crime_list_item_solvedCheckBox);
+			solvedCheckBox.setChecked(c.getmSolved());
+			
 			return convertView;
 	}
 		}
