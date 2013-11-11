@@ -74,7 +74,7 @@ public class CrimeFragment extends Fragment {
 		mDateButton.setText(mCrime.getmDate().toString());
 	}
 	
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	@TargetApi(11)
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState){
 		View v = inflater.inflate(R.layout.fragment_crime, parent, false);
@@ -117,7 +117,7 @@ public class CrimeFragment extends Fragment {
 		});
 		
 		mSolvedCheckBox = (CheckBox) v.findViewById(R.id.crime_solved);
-		mSolvedCheckBox.setChecked(mCrime.getmSolved());
+		//mSolvedCheckBox.setChecked(mCrime.getmSolved());
 		mSolvedCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			@SuppressWarnings("unused")
 			public void onCheckedChange(CompoundButton buttonView, boolean isChecked) {
